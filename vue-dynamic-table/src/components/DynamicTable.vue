@@ -1,8 +1,30 @@
 <template lang="html">
-
+  <div class="">
+    <tableHeader :columnsHeader="this.columns"></tableHeader>
+    <div v-for="column in this.columns">
+      <div v-if="column.type === 'select'">
+        <select
+          :optionsList="column.optionsList"
+          :placeholder="column.placeholder"
+          :selected="currentElement[column.name]"
+          :index="index"
+          :data=""
+          v-on:selectOption="setSelectedOption($event)">
+        </select>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
+
+import Select from './Select.vue'
+import Checkbox from './Checkbox.vue'
+import TextInput from './TextInput.vue'
+import TableHeader from './TableHeader.vue'
+import AddRowButton from './AddRowButton.vue'
+import DeleteRowButton from './DeleteRowButton.vue'
+
 export default {
   props: {
     columns: {
@@ -21,23 +43,29 @@ export default {
       type: Number,
       required: true
     },
-    showPlusButton: {
+    showAddRowButton: {
       type: Boolean,
       required: false,
       default: true
     },
-    showMinusButton: {
+    showDeleteRowButton: {
       type: Boolean,
       required: false,
       default: true
     },
-    dataBrought: {
+    data: {
       type: Object,
       required: false,
       default: {}
     }
   },
   components: {
+    Select,
+    Checkbox,
+    TextInput,
+    TableHeader,
+    AddRowButton,
+    DeleteRowButton
   },
   computed: {
   },
