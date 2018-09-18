@@ -48,6 +48,7 @@ import TableHeader from './TableHeader.vue'
 import DeleteRowButton from './DeleteRowButton.vue'
 
 export default {
+  name: 'dynamicTable'
   props: {
     columns: {
       type: Array,
