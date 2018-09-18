@@ -30,7 +30,7 @@ export default {
       type: String,
       required: false,
       default: 'checkbox'
-    }
+    },
     data: {
       type: Array,
       required: false
