@@ -26,6 +26,15 @@
           v-on:newTextInputValue="setTextInputValue($event)">
         </textInput>
       </div>
+      <div v-if="column.type === 'checkbox'">
+        <checkbox
+          :type="column.checkboxType"
+          :text="column.labelText"
+          :index="index"
+          :data=""
+          v-on:newCheckboxValue="setCheckboxValue($event)">
+        </checkbox>
+      </div>
     </div>
   </div>
 </template>
