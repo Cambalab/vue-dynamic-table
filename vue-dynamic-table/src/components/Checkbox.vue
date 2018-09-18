@@ -2,7 +2,11 @@
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <div class="input-group-text">
-        <input :type="this.type" :aria-label="this.text" v-model="currentCheckboxValue" @change="newCheckboxValue(currentCheckboxValue)">
+        <input
+          :type="this.type"
+          :aria-label="this.text"
+          v-model="currentCheckboxValue"
+          @change="newCheckboxValue(currentCheckboxValue)">
       </div>
     </div>
   </div>
@@ -27,7 +31,7 @@ export default {
       required: false,
       default: 'checkbox'
     }
-    fetchedValue: {
+    data: {
       type: Array,
       required: false
     },
@@ -41,10 +45,10 @@ export default {
       this.$emit('newCheckboxValue', {checkboxValue: newValue})
     },
     refreshData() {
-      if (this.fetchedValue.includes(this.index + 1)) {
+      if (this.data.includes(this.index + 1)) {
         this.currentCheckboxValue = true
       } else {
-        if (this.fetchedValue.includes(true)) {
+        if (this.data.includes(true)) {
           this.currentCheckboxValue = true
         }
       }
@@ -54,12 +58,12 @@ export default {
     checked: function(newVal, oldVal) {
       this.currentCheckboxValue = newVal
     },
-    fetchedValue: function() {
-      if (this.fetchedValue) {
-        if (this.fetchedValue.includes(this.index + 1)) {
+    data: function() {
+      if (this.data) {
+        if (this.data.includes(this.index + 1)) {
           this.currentCheckboxValue = true
         } else {
-          if (this.fetchedValue.includes(true)) {
+          if (this.data.includes(true)) {
             this.currentCheckboxValue = true
           }
         }
@@ -67,7 +71,7 @@ export default {
     }
   },
   created() {
-    if (this.fetchedValue) {
+    if (this.data) {
       this.refreshData()
     }
   }

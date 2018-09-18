@@ -39,7 +39,7 @@ export default {
       required: false,
       deafult: 'text'
     },
-    fetchedValue: {
+    data: {
       type: String,
       required: false
     }
@@ -48,9 +48,9 @@ export default {
     newTextInputValue(newValue) {
       this.$emit('newTextInputValue', { textInputValue: newValue, index: this.index })
     },
-    refreshDatos() {
-      if (this.fetchedValue) {
-        this.textInputValue = this.fetchedValue
+    refreshData() {
+      if (this.data) {
+        this.textInputValue = this.data
       }
     }
   },
@@ -58,12 +58,12 @@ export default {
     textValue: function(newVal, oldVal) {
       this.textInputValue = newVal
     },
-    fetchedValue: function(newVal, oldVal) {
+    data: function(newVal, oldVal) {
       this.textInputValue = newVal
     }
   },
   created() {
-    this.refreshDatos()
+    this.refreshData()
   }
 }
 </script>

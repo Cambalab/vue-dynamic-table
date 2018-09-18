@@ -6,7 +6,7 @@
 </template>
 <script>
 export default {
-  
+
   name: 'select',
   data() {
     return {
@@ -29,7 +29,7 @@ export default {
       required: false,
       default: 'Select an option'
     },
-    fetchedValue: {
+    data: {
       type: Number,
       required: false
     }
@@ -38,8 +38,8 @@ export default {
     selected: function(newVal, oldVal) {
       this.selectedOption = newVal
     },
-    fetchedValue: function(newVal, oldVal) {
-      this.selectOption(this.fetchedValue)
+    data: function(newVal, oldVal) {
+      this.selectOption(this.data)
     }
   },
   methods: {
@@ -47,8 +47,8 @@ export default {
       this.$emit('selectOption', { selectedOption: currentOption, index: this.index })
     },
     refreshData() {
-      if (this.fetchedValue) {
-        this.selectedOption = this.fetchedValue
+      if (this.data) {
+        this.selectedOption = this.data
       }
     }
   },
