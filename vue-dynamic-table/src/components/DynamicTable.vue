@@ -1,6 +1,9 @@
 <template lang="html">
   <div class="">
-    <tableHeader :columnsHeader="this.columns"></tableHeader>
+    <tableHeader
+      :columnsHeader="this.columns"
+      :showAddRowButton="this.showAddRowButton">
+    </tableHeader>
     <div v-for="column in this.columns">
       <div v-if="column.type === 'select'">
         <select
@@ -12,6 +15,17 @@
           v-on:selectOption="setSelectedOption($event)">
         </select>
       </div>
+      <div v-if="column.type === 'textInput'">
+        <textInput
+          :type="column.inputType"
+          :placeholder="column.placeholder"
+          :disabled="column.disabled"
+          :index="index"
+          :textValue="currentElement[column.name]"
+          :data=""
+          v-on:newTextInputValue="setTextInputValue($event)">
+        </textInput>
+      </div>
     </div>
   </div>
 </template>
@@ -22,7 +36,6 @@ import Select from './Select.vue'
 import Checkbox from './Checkbox.vue'
 import TextInput from './TextInput.vue'
 import TableHeader from './TableHeader.vue'
-import AddRowButton from './AddRowButton.vue'
 import DeleteRowButton from './DeleteRowButton.vue'
 
 export default {
@@ -64,7 +77,6 @@ export default {
     Checkbox,
     TextInput,
     TableHeader,
-    AddRowButton,
     DeleteRowButton
   },
   computed: {
