@@ -14,7 +14,7 @@ export default {
     }
   },
   props: {
-    OptionsList: {
+    optionsList: {
       type: Array,
       required: true
     },
