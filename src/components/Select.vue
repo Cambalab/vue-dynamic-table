@@ -1,14 +1,16 @@
 <template lang="html">
-  <select class="form-control" v-model="selectedOption" @change="selectOption(selectedOption)">
-    <option v-bind:value="null">{{this.placeholder}}</option>
-    <option v-for="option in OptionsList" class="item-text" v-bind:value="option.id">{{option.text}}</option>
-  </select>
+  <div class="flex-container">
+    <select class="form-control" v-model="selectedOption" @change="selectOption(selectedOption)">
+      <option v-bind:value="null">{{this.placeholder}}</option>
+      <option v-for="option in optionsList" class="item-text" v-bind:value="option.id" :key="option.id">{{option.text}}</option>
+    </select>
+  </div>
 </template>
 <script>
 export default {
 
-  name: 'select',
-  data() {
+  name: 'Select',
+  data () {
     return {
       selectedOption: null
     }
@@ -35,29 +37,29 @@ export default {
     }
   },
   watch: {
-    selected: function(newVal, oldVal) {
+    selected: function (newVal, oldVal) {
       this.selectedOption = newVal
     },
-    data: function(newVal, oldVal) {
-      this.selectOption(this.data)
+    selectOption: function (newVal, oldVal) {
+      this.selected = newVal
     }
   },
   methods: {
-    selectOption(currentOption) {
+    selectOption (currentOption) {
       this.$emit('selectOption', { selectedOption: currentOption, index: this.index })
     },
-    refreshData() {
+    refreshData () {
       if (this.data) {
         this.selectedOption = this.data
       }
     }
   },
-  created() {
+  created () {
     this.refreshData()
   }
 }
 </script>
-<style lang="css">
+<style scoped>
 select{
   cursor: pointer;
 }

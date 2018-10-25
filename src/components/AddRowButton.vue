@@ -1,19 +1,21 @@
 <template lang="html" v-if="this.showPlusButton">
-  <div class="" @click="addNewRow()">
-    <i  :class="this.typeButtonClass"
-        data-toggle="tooltip"
-        :data-original-title="this.tooltipTitle">
+  <div @click="addNewRow()">
+    <i :class="[this.typeButtonClass, 'plus-button']"
+       data-toggle="tooltip"
+       data-placement="right"
+       :title="this.tooltipTitle">
     </i>
   </div>
 </template>
 
 <script>
 export default {
+  name: 'AddRowButton',
   props: {
     typeButtonClass: {
       type: String,
       required: false,
-      default: 'fa fa-plus-square-o x2'
+      default: 'fa fa-plus-square x2'
     },
     tooltipTitle: {
       type: String,
@@ -27,7 +29,7 @@ export default {
     }
   },
   methods: {
-    addNewRow() {
+    addNewRow () {
       this.$emit('addNewRow')
     }
   }

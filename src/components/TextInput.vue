@@ -1,18 +1,20 @@
 <template lang="html">
-  <label>
-    <input
-      class="form-control"
-      :type="this.type"
-      :placeholder="this.placeholder"
-      :disabled="this.disabled"
-      v-model="textInputValue"
-      @change="newTextInputValue(textInputValue)">
-  </label>
+  <div class="">
+    <label>
+      <input
+        class="form-control"
+        :type="this.type"
+        :placeholder="this.placeholder"
+        :disabled="this.disabled"
+        v-model="textInputValue"
+        @change="newTextInputValue(textInputValue)">
+    </label>
+  </div>
 </template>
 <script>
 export default {
-  name: 'textInput',
-  data() {
+  name: 'TextInput',
+  data () {
     return {
       textInputValue: null
     }
@@ -27,7 +29,7 @@ export default {
     placeholder: {
       type: String,
       required: false,
-      default: 'Add some description...'
+      default: 'Write here...'
     },
     disabled: {
       type: Boolean,
@@ -45,24 +47,24 @@ export default {
     }
   },
   methods: {
-    newTextInputValue(newValue) {
+    newTextInputValue (newValue) {
       this.$emit('newTextInputValue', { textInputValue: newValue, index: this.index })
     },
-    refreshData() {
+    refreshData () {
       if (this.data) {
         this.textInputValue = this.data
       }
     }
   },
   watch: {
-    textValue: function(newVal, oldVal) {
+    textValue: function (newVal, oldVal) {
       this.textInputValue = newVal
     },
-    data: function(newVal, oldVal) {
-      this.textInputValue = newVal
+    newTextInputValue: function (newVal, oldVal) {
+      this.textValue = newVal
     }
   },
-  created() {
+  created () {
     this.refreshData()
   }
 }
