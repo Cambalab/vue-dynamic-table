@@ -8,7 +8,7 @@
           :selected="currentRow[column.name]"
           :index="index"
           :data="getData(column.name)"
-          v-on:selectOption="setSelectedOption($event)">
+          v-on:selectOption="setSelectedOption($event, column.name)">
         </Select>
       </div>
         <div v-if="column.type === 'textInput'" class="flex-container">
@@ -19,7 +19,7 @@
             :index="index"
             :textValue="currentRow[column.name]"
             :data="getData(column.name)"
-            v-on:newTextInputValue="setTextInputValue($event)">
+            v-on:newTextInputValue="setTextInputValue($event, column.name)">
         </TextInput>
       </div>
       <div v-if="column.type === 'checkbox'" v-for="(label, idxCheck) in column.labelTexts" :key="idxCheck" class="flex-wrap">
@@ -73,15 +73,12 @@ export default {
   computed: {
   },
   methods: {
-    setSelectedOption (option) {
-      let column = Object.keys(this.currentRow)[0]
+    setSelectedOption (option, column) {
       this.currentRow[column] = option.selectedOption
       this.$emit('selectedOption', {column: column, value: option.selectedOption})
     },
-    setTextInputValue (stringValue) {
-      let column = Object.keys(this.currentRow)[stringValue.index]
-      console.log(Object.keys(this.currentRow))
-      console.log(column)
+    setTextInputValue (stringValue, column) {
+      this.currentRow[column] = stringValue.textInputValue
       this.$emit('textInputValue', {column: column, value: stringValue.textInputValue})
     },
     getData (column) {

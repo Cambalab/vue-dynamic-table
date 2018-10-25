@@ -13,7 +13,7 @@
           :currentRow="currentRow"
           :index="index"
           :data="data[index]"
-          class=" tableRow"
+          class="tableRow"
           v-on:selectedOption="selectedOption($event)"
           v-on:textInputValue="textInputValue($event)">
         </Row>
@@ -90,7 +90,7 @@ export default {
   },
   watch: {
   },
-  create () {
+  created () {
   }
 }
 </script>

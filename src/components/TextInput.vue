@@ -46,6 +46,14 @@ export default {
       required: false
     }
   },
+  watch: {
+    textValue: function (newVal, oldVal) {
+      this.textInputValue = newVal
+    },
+    newTextInputValue: function (newVal, oldVal) {
+      this.textValue = newVal
+    }
+  },
   methods: {
     newTextInputValue (newValue) {
       this.$emit('newTextInputValue', { textInputValue: newValue, index: this.index })
@@ -54,14 +62,6 @@ export default {
       if (this.data) {
         this.textInputValue = this.data
       }
-    }
-  },
-  watch: {
-    textValue: function (newVal, oldVal) {
-      this.textInputValue = newVal
-    },
-    newTextInputValue: function (newVal, oldVal) {
-      this.textValue = newVal
     }
   },
   created () {
