@@ -38,6 +38,16 @@
         v-on:deleteRow="deleteRow($event, 'four')">
       </DynamicTable>
     </div>
+    <div class="flex-row-container box" id="five">
+      <DynamicTable
+        :columns="this.columnsForTableFive()"
+        :rows="this.rowsForTableFive"
+        :data="this.dataForTableFive"
+        v-on:addRow="addRow('five')"
+        v-on:selectedOption="setTextInputValue($event)"
+        v-on:deleteRow="deleteRow($event, 'five')">
+      </DynamicTable>
+    </div>
   </div>
 </template>
 <script>
@@ -89,7 +99,7 @@ export default {
     dataForTableFour: function () {
       return DATA_FOR_TABLE_FOUR
     },
-    dataFortableFive: function () {
+    dataForTableFive: function () {
       return DATA_FOR_TABLE_FIVE
     }
   },
@@ -117,6 +127,13 @@ export default {
         {name: 'select_column', type: 'select', placeholder: 'Select an option for this column', optionsList: this.optionsListForTable}
       ]
     },
+    columnsForTableFive () {
+      return [
+        {name: 'textInput_column', type: 'textInput', placeholder: 'Write here', inputType: 'text'},
+        {name: 'textInput_number_column', type: 'textInput', placeholder: 'Enter only numbers', inputType: 'number'},
+        {name: 'textInput_disabled_column', type: 'textInput', placeholder: 'I am a disabled input', disabled: true, inputType: 'text'}
+      ]
+    },
     addRow (table) {
       switch (table) {
         case 'one':
@@ -142,6 +159,13 @@ export default {
             select_column: null
           })
           break
+        case 'five':
+          this.rowsForTableFive.push({
+            textInput_column: null,
+            textInput_number_column: null,
+            textInput_disable_column: null
+          })
+          break
         default:
       }
     },
@@ -156,6 +180,9 @@ export default {
     initTables () {
       DATA_FOR_TABLE_FOUR.forEach(row => {
         this.rowsForTableFour.push(row)
+      })
+      DATA_FOR_TABLE_FIVE.forEach(row => {
+        this.rowsForTableFive.push(row)
       })
     }
   },
