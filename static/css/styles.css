@@ -9,7 +9,7 @@ h1 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  margin-top: 5px;
+  margin-top: 1em;
 }
 
 .tableRow {
@@ -204,4 +204,9 @@ h1 {
 .check-text {
   padding-left: 24px;
   color: #000;
+}
+
+.load-data-title {
+  margin: 3em 0em 1em auto;
+  justify-content: center;
 }
