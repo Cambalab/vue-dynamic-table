@@ -21,17 +21,17 @@ export const DATA_FOR_TABLE_FOUR = [
 export const DATA_FOR_TABLE_FIVE = [
   {
     textInput_column: 'text 1',
-    textInput_number_column: 1,
+    textInput_number_column: '1',
     textInput_disabled_column: 'show text 1'
   },
   {
     textInput_column: 'text 2',
-    textInput_number_column: 2,
+    textInput_number_column: '2',
     textInput_disabled_column: 'show text 2'
   },
   {
     textInput_column: 'text 3',
-    textInput_number_column: 3,
+    textInput_number_column: '3',
     textInput_disabled_column: 'show text 3'
   }
 ]
