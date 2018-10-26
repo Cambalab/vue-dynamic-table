@@ -15,7 +15,8 @@
           :data="data[index]"
           class="tableRow"
           v-on:selectedOption="selectedOption($event)"
-          v-on:textInputValue="textInputValue($event)">
+          v-on:textInputValue="textInputValue($event)"
+          v-on:checkboxValue="checkboxValue($event)">
         </Row>
         <DeleteRowButton
           :showMinusButton="showDeleteRowButton"
@@ -86,6 +87,9 @@ export default {
     },
     textInputValue (value) {
       this.$emit('textInputValue', value)
+    },
+    checkboxValue (value) {
+      this.$emit('checkboxValue', value)
     }
   },
   watch: {

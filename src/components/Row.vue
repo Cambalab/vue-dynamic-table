@@ -29,7 +29,7 @@
           :checked="currentRow[column.name]"
           :index="idxCheck"
           :data="getData(column.name)"
-          v-on:newCheckboxValue="setCheckboxValue({data: $event, column: column.name, idxCheck: idxCheck})">
+          v-on:newCheckboxValue="setCheckboxValue($event, column.name, idxCheck)">
         </Checkbox>
       </div>
     </div>
@@ -81,6 +81,17 @@ export default {
       this.currentRow[column] = stringValue.textInputValue
       this.$emit('textInputValue', {column: column, value: stringValue.textInputValue})
     },
+    setCheckboxValue (option, column, checkboxIndex) {
+      console.log(option)
+      console.log(checkboxIndex)
+      if (option.checkboxValue) {
+        this.currentRow[column][checkboxIndex] = {idxCheck: option.idxCheck, value: option.checkboxValue}
+      } else {
+        let idx = this.currentRow[column].findIndex(check => check.idxCheck === option.idxCheck)
+        this.currentRow[column].splice(idx, 1)
+      }
+      this.$emit('checkboxValue', {column: column, value: option.checkboxValue, idxCheck: checkboxIndex})
+    },
     getData (column) {
       if (this.data !== undefined) {
         if (this.data.length !== 0) {
@@ -92,7 +103,6 @@ export default {
     }
   },
   created () {
-    // console.log(`DATA EN ROW: ${JSON.stringify(this.data)}`)
   }
 }
 </script>

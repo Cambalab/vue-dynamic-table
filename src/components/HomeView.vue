@@ -25,8 +25,13 @@
         :columns="this.columnsForTableThree()"
         :rows="this.rowsForTableThree"
         :data="this.dataForTableThree"
-        v-on:addRow="addRow('three')">
+        v-on:addRow="addRow('three')"
+        v-on:checkboxValue="setCheckboxValue($event)"
+        v-on:deleteRow="deleteRow($event, 'three')">
       </DynamicTable>
+    </div>
+    <div class="flex-row-container load-data-title">
+      <h1>Load Data from Database</h1>
     </div>
     <div class="flex-row-container box" id="four">
       <DynamicTable
@@ -70,13 +75,17 @@ export default {
       rowsForTableThree: [],
       rowsForTableFour: [],
       rowsForTableFive: [],
-      objectDataTalbeOne: {
+      objectDataTableOne: {
         select_column: []
       },
-      objectDataTalbeTwo: {
+      objectDataTableTwo: {
         textInput_column: null,
         textInput_number_column: null,
         textInput_disable_column: null
+      },
+      objectDataTableThree: {
+        checkbox_column: [],
+        checkbox_radio_column: []
       }
     }
   },
@@ -150,8 +159,8 @@ export default {
           break
         case 'three':
           this.rowsForTableThree.push({
-            checkbox_column: null,
-            checkbox_radio_column: null
+            checkbox_column: [],
+            checkbox_radio_column: []
           })
           break
         case 'four':
@@ -172,10 +181,18 @@ export default {
     deleteRow (rowIndex, table) {
     },
     setSelectedOption (option) {
-      this.objectDataTalbeOne[option.column].push(option.value)
+      this.objectDataTableOne[option.column] = option.value
     },
     setTextInputValue (value) {
-      this.objectDataTalbeTwo[value.column] = value.value
+      this.objectDataTableTwo[value.column] = value.value
+    },
+    setCheckboxValue (value) {
+      if (value.value) {
+        this.objectDataTableThree[value.column].push(value.idxCheck)
+      } else {
+        let idx = this.objectDataTableThree[value.column].findIndex(a => a === value.idxCheck)
+        this.objectDataTableThree[value.column].splice(idx, 1)
+      }
     },
     initTables () {
       DATA_FOR_TABLE_FOUR.forEach(row => {

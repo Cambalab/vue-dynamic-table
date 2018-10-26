@@ -21,10 +21,13 @@ export default {
     }
   },
   props: {
+    checked: {
+      type: Array
+    },
     text: {
       type: String,
       required: false,
-      default: 'aaaaaaaa'
+      default: ''
     },
     type: {
       type: String,
@@ -40,9 +43,28 @@ export default {
       requiered: false
     }
   },
+  watch: {
+    checked: function (newVal, oldVal) {
+      this.currentCheckboxValue = newVal[this.index].value
+    },
+    newCheckboxValue: function (newVal, oldVal) {
+      this.checked = newVal
+    }
+    // data: function () {
+    //   if (this.data) {
+    //     if (this.data.includes(this.index + 1)) {
+    //       this.currentCheckboxValue = true
+    //     } else {
+    //       if (this.data.includes(true)) {
+    //         this.currentCheckboxValue = true
+    //       }
+    //     }
+    //   }
+    // }
+  },
   methods: {
     newCheckboxValue (newValue) {
-      this.$emit('newCheckboxValue', {checkboxValue: newValue})
+      this.$emit('newCheckboxValue', {idxCheck: this.index, checkboxValue: newValue})
     },
     refreshData () {
       if (this.data.includes(this.index + 1)) {
@@ -50,22 +72,6 @@ export default {
       } else {
         if (this.data.includes(true)) {
           this.currentCheckboxValue = true
-        }
-      }
-    }
-  },
-  watch: {
-    checked: function (newVal, oldVal) {
-      this.currentCheckboxValue = newVal
-    },
-    data: function () {
-      if (this.data) {
-        if (this.data.includes(this.index + 1)) {
-          this.currentCheckboxValue = true
-        } else {
-          if (this.data.includes(true)) {
-            this.currentCheckboxValue = true
-          }
         }
       }
     }
