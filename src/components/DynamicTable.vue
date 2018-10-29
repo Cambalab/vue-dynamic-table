@@ -105,7 +105,6 @@ export default {
   watch: {
   },
   created () {
-    console.log(this.iconClassForAddButton)
   }
 }
 </script>
