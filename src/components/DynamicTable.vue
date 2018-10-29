@@ -4,6 +4,7 @@
       <TableHeader
         :columnsHeader="columns"
         :showAddRowButton="showAddRowButton"
+        :iconClassForAddButton="iconClassForAddButton"
         v-on:addNewRow="addRow()">
       </TableHeader>
       <div v-for="(currentRow, index) in this.rows" :key="index" class="flex-row-container">
@@ -20,6 +21,7 @@
         </Row>
         <DeleteRowButton
           :showMinusButton="showDeleteRowButton"
+          :typeButtonClass="iconClassForDeleteButton"
           :index="index"
           v-on:deleteRow="deleteRow($event)">
         </DeleteRowButton>
@@ -59,6 +61,14 @@ export default {
       required: false,
       default: true
     },
+    iconClassForDeleteButton: {
+      type: String,
+      required: false
+    },
+    iconClassForAddButton: {
+      type: String,
+      required: false
+    },
     data: {
       type: Array,
       required: false
@@ -95,6 +105,7 @@ export default {
   watch: {
   },
   created () {
+    console.log(this.iconClassForAddButton)
   }
 }
 </script>

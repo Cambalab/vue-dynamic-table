@@ -3,7 +3,7 @@
     <div v-for="column in this.columnsHeader" :key="column.name" class="flex-tableHeader">
       <label class="header-text">{{ replaceUnderscores(column.name) }}</label>
     </div>
-    <AddRowButton v-if="this.showAddRowButton" v-on:addNewRow="addNewRow()"></AddRowButton>
+    <AddRowButton v-if="this.showAddRowButton" v-on:addNewRow="addNewRow()" :typeButtonClass="iconClassForAddButton"></AddRowButton>
   </div>
 </template>
 
@@ -21,6 +21,10 @@ export default {
       type: Boolean,
       required: false,
       default: true
+    },
+    iconClassForAddButton: {
+      type: String,
+      required: false
     }
   },
   components: {
