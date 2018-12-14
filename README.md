@@ -115,7 +115,7 @@ data: {
   * **inputType**: Tipo de input, por default es ```'text'```, se puede cambiar a ```'number'```.
   * **disabled**: Deshabilitar el input. Por default es ```false```, se puede cambiar a ```true```.
 
-### Checkbox (el desarrollo)  
+### Checkbox (en desarrollo)  
 
 * **name**: Nombre de la columna. Es de tipo String.
 * **type**: Indica el tipo de la columna. Es de tipo String. Usar ```'checkbox'``` para que la columna sea de tipo Checkbox.
@@ -151,7 +151,7 @@ data: {
 ## Ejemplos de usos
 
 * #### Tabla de una columna de tipo Selector.
-  ![tabla de una columna de tipo Selector](./images/table_select_example.png)
+  ![tabla de una columna de tipo Selector](./images/select_table_example.gif)
   ``` html
   <DynamicTable
     :columns="this.columnsForTableOne()"
@@ -211,7 +211,7 @@ setSelectedOption (option) {
 }
 ```  
 * #### Tabla con tres columnas de tipo TextInput
-![tabla con tres columnas de tipo TextInput](./images/table_input_example.png)  
+![tabla con tres columnas de tipo TextInput](./images/input_table_example.gif)
 ``` html
 <DynamicTable
     :columns="this.columnsForTableTwo()"
