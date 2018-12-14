@@ -3,11 +3,11 @@
 **Vue Dynamic Table** es un plugin para **Vue.js** con el que vas a poder crear tablas customizables y dinámicas para formularios.
 
 #### Características
-* Poder elegir la cantidad de columnas.
-* Poder elegir el tipo de campo que va a tener cada columna.
-* Poder elegir la cantidad de filas.
+* Elegir la cantidad de columnas.
+* Elegir el tipo de campo que va a tener cada columna.
+* Elegir la cantidad de filas.
 * Agregar y/o eliminar filas dinámicamente.
-* Cambiar el tipo de icono de agregar y eliminar fila.
+* Cambiar el icono de agregar y eliminar fila.
 ---
 ## Descarga e instalación de demo
 
@@ -39,7 +39,7 @@ components: {
 },
 ```
 
-* En el template usar el tag de ```<DynamicTable>```
+* Usar el tag html ```<DynamicTable>```
 ``` html
 <DynamicTable
   {props}
@@ -48,21 +48,21 @@ components: {
 ```
 ---
 ## Props
-* **columns** : Recibe un Array de objectos donde cada objeto es una columna. Es requerido para que se renderize la tabla.
+* **columns** : Son las columnas de la tabla. Es de tipo Array y es requerido.
 ``` javascript
 columns: {
   type: Array,
   required: true
 },
 ```
-* **rows** : Recibe un Array donde van a estar cada fila de la tabla. Es requerido para que se renderize la tabla.
+* **rows** : Son las filas de la tabla. Es de tipo Array y es requerido.
 ``` javascript
 rows: {
   type: Array,
   required: true
 },
 ```
-* **showAddRowButton** : Recibe un Boolean indicando si se muestra el botón para agregar filas. No es requerido para renderizar la tabla, y por default se muestra el botón.
+* **showAddRowButton** : Muestra el botón para agregar una fila. Es de tipo Boolean y no es requerido.
 ``` javascript
 showAddRowButton: {
   type: Boolean,
@@ -70,7 +70,7 @@ showAddRowButton: {
   default: true
 },
 ```
-* **showDeleteRowButton** : Recibe un Boolean indicando si se muestra el botón para eliminar filas. No es requerido para renderizar la tabla, y por default se muestra el botón.
+* **showDeleteRowButton** : Muestra el botón para eliminar una fila. Es de tipo Boolean y no es requerido.
 ``` javascript
 showDeleteRowButton: {
   type: Boolean,
@@ -78,21 +78,21 @@ showDeleteRowButton: {
   default: true
 },
 ```
-* **iconClassForDeleteButton** : Recibe un String con la clase de icono que se quiera usar como botón para elimnar una fila. No es requerido para renderizar la tabla, y por default usa ```fa fa-trash x2``` de **Font Awesome**.
+* **iconClassForDeleteButton** : Tipo de icono del botón para eliminar una fila. Es de tipo String y no es requerido. Por default es ```fa fa-trash x2``` de **Font Awesome**.
 ``` javascript
 iconClassForDeleteButton: {
   type: String,
   required: false
 },
 ```
-* **iconClassForAddButton** : Recibe un String con la clase de icono que se quiera usar como botón para agregar una fila. No es requerido para renderizar la tabla, y por default usa ```fa fa-plus-square x2``` de **Font Awesome**.
+* **iconClassForAddButton** : Tipo de icono del botón para agregar una fila. Es de tipo String y no es requerido. Por default es ```fa fa-plus-square x2``` de **Font Awesome**.
 ``` javascript
 iconClassForAddButton: {
   type: String,
   required: false
 },
 ```
-* **data** : Recibe un Array con el mismo formato que **rows** con la data que viene de la Base de Datos.
+* **data** : Datos para mostrar que vienen de la Base de Datos. Es de tipo Array y no es requerido.
 ``` javascript
 data: {
   type: Array,
@@ -103,37 +103,37 @@ data: {
 ## Tipos de columnas
 
 ### Selector (dropdown menú)
-  * **name**: Un String que es el nombre de la columna.
-  * **type**: Para hacer que la columna sea de tipo Selector usar ```'select'```.
-  * **placeholder**: Por default es ```'Select an option'```, se puede cambiar por el que uno deseé.
-  * **optionsList**: Un Array con las opciones de menú.
+  * **name**: Nombre de la columna. Es de tipo String.
+  * **type**: Indica el tipo de la columna. Es de tipo String. Usar ```'select'``` para que la columna sea de tipo Selector.
+  * **placeholder**: Placeholder del campo. Es de tipo String. Por default es ```'Select an option'```.
+  * **optionsList**: Opciones del campo Selector. Es de tipo Array.
 
 ### TextInput
-  * **name**: Un String que es el nombre de la columna.
-  * **type**: Para hacer que la columna sea de tipo TextInput usar  ```'textInput'```.
-  * **placeholder**: Por default es ```'Write here...'```, se puede cambiar, se puede cambiar por el que uno deseé.
+  * **name**: Nombre de la columna. Es de tipo String.
+  * **type**: Indica el tipo de la columna. Es de tipo String. Usar ```'textInput'``` para que la columna sea de tipo Input.
+  * **placeholder**: Placeholder del campo. Es de tipo String. Por default es ```'Write here...'```.
   * **inputType**: Tipo de input, por default es ```'text'```, se puede cambiar a ```'number'```.
-  * **disabled**: Para hacer que input esté deshabilitado, por default esta en ```false```, se puede cambiar a ```true```.
+  * **disabled**: Deshabilitar el input. Por default es ```false```, se puede cambiar a ```true```.
 
 ### Checkbox (el desarrollo)  
 
-* **name**: Un String que es el nombre de la columna.
-* **type**: Para hacer que la columna sea de tipo Checkbox usar ```'checkbox'```.
-* **labelTexts**: Un Array con Strings que van a ser los labels de cada checkbox.
-* **checkboxType**: Tipo del checkbox, por default es ```'checkbox'```, se puede cambiar a ```'radio'```.
+* **name**: Nombre de la columna. Es de tipo String.
+* **type**: Indica el tipo de la columna. Es de tipo String. Usar ```'checkbox'``` para que la columna sea de tipo Checkbox.
+* **labelTexts**: Labels de cada checkbox. Es de tipo Array.
+* **checkboxType**: Tipo del checkbox. Por default es ```'checkbox'```, se puede cambiar a ```'radio'```.
 
 ---
 ## Eventos  
 
   ### Selector  
-  * **selectedOption**: Devuelve un objeto con la columna y el valor
+  * **selectedOption**: Obtener la opción seleccionada.
   ``` javascript
   {column: "select_column", value: 1}
   ```  
 
 
   ### TextInput
-  * **textInputValue**: Devuelve un objecto con la columna y el valor
+  * **textInputValue**: Obtener el valor del input.
   ``` javascript
   {column: "textInput_column", value: "hello"}
   {column: "textInput_number_column", value: "23"}
@@ -141,7 +141,7 @@ data: {
 
 
   ### Checkbox  
-  * **checkboxValue**: Devuelve un objecto con la columna, el index del checkbox y el valor
+  * **checkboxValue**: Obtener el valor del checkbox.
   ``` javascript
   {column: "checkbox_column", value: true, idxCheck: 0}
   {column: "checkbox_column", value: true, idxCheck: 1}
@@ -150,7 +150,7 @@ data: {
 ---
 ## Ejemplos de usos
 
-* #### Tabla con una columna de tipo selector
+* #### Tabla de una columna de tipo Selector.
   ![tabla de una columna de tipo Selector](./images/table_select_example.png)
   ``` html
   <DynamicTable
@@ -165,18 +165,18 @@ data: {
   ``` javascript
   data () {
     return {
-      rowsForTableOne: [], // Un Array vacío por que no tiene ninguna fila.
-      objectDataTableOne: { // Definimos como va a hacer el Objeto que representa a una fila.
+      rowsForTableOne: [], // Array de filas.
+      objectDataTableOne: { // Objeto que representa a una fila.
         select_column: []
       }
     }
   },
   ```
-**Una Columna de tipo Selector se declara como un Objecto con las siguientes propiedades:**  
-  * **name**: Es un String con el nombre de la columna. Si el nombre tiene más de una palabra se deben separar con guiones bajos.  
-  * **type** : Es un String con el tipo de columna.  
-  * **placeholder** : Es un String para definir un placeholder. No es obligatorio definirlo.
-  * **optionsList** : Es un Array con las opciones que va a tener el selector.
+**¿Cómo declarar una columna de tipo Selector?**  
+  * **name**: Nombre de la columna separando las palabras con guiones bajos.  
+  * **type** : Tipo de la columna.  
+  * **placeholder** : Placeholder del campo.
+  * **optionsList** : Opciones del campo.
 ``` javascript
 methods: {
   columnsForTableOne () {
@@ -192,7 +192,7 @@ methods: {
 }
 ```  
 
-  **Para agregar una fila agregamos un elemento de fila a rows**  
+  **Agregar una fila**  
   ``` javascript
       this.rowsForTableOne.push({
         select_column: null
