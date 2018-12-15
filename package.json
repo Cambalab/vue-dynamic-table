@@ -2,7 +2,7 @@
   "name": "vue-dynamic-table",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "Leonardo Vaquel <leonardovaquel@gmail.com>",
+  "author": "Camba <info@camba.coop>",
   "private": true,
   "license": "GPL-3.0",
   "scripts": {
