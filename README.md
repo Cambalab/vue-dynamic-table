@@ -274,8 +274,8 @@ data () {
       textInput_disable_column: null
   })
   ```
-  **Eliminar fila**  
-    Cuando eliminamos una fila, ésta se elimina sola. Pero si se quiere hacer algo extra solo se tiene que escuchar el evento ```deleteRow```  
+  **Eliminar fila**
+  Cuando eliminamos una fila, ésta se elimina sola. Pero si se quiere hacer algo extra solo se tiene que escuchar el evento ```deleteRow```
 ---
 ## Renderizar data proveniente de la Base de Datos  
 Para renderizar la data que viene de la Base de Datos, hay que pasarle a la *vue-dynamic-table* un Array de las filas con el nombre de la columna y el valor en la **prop data**.
