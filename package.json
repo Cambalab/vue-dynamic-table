@@ -1,7 +1,7 @@
 {
   "name": "vue-dynamic-table",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "Vue-dynamic-table is a Vuejs plugin for do easier tables forms",
   "author": "Camba <info@camba.coop>",
   "private": true,
   "license": "GPL-3.0",
