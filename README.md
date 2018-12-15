@@ -1,6 +1,8 @@
 # Vue Dynamic Table
 
-**Vue Dynamic Table** es un plugin para **Vue.js** con el que vas a poder crear tablas customizables y dinámicas para formularios.
+**Vue Dynamic Table** es un plugin para **Vue.js** con el que vas a poder crear tablas customizables y dinámicas para formularios.  
+
+***Se está trabajando en el tipo de columna Checkbox***
 
 #### Características
 * Elegir la cantidad de columnas.
@@ -180,37 +182,35 @@ data: {
 ``` javascript
 methods: {
   columnsForTableOne () {
-    return [
-      {
-        name: 'select_column',
-        type: 'select',
-        placeholder: 'Select an option for this column',
-        optionsList: this.optionsListForTable
-      }
-    ]
-  },
-}
+      return [
+        {
+          name: 'select_column',
+          type: 'select',
+          placeholder: 'Select an option for this column',
+          optionsList: this.optionsListForTable
+        }
+      ]
+    }
 ```  
 
-  **Agregar una fila**  
+  **Agregar fila**  
+  Para agregar una fila solo hay que agregar un elemento de fila al Array de filas.
   ``` javascript
       this.rowsForTableOne.push({
         select_column: null
       })
   ```  
-  Al eliminar una fila la tabla ya la elimina automáticamente, si queremos hacer algo más, al momento de eliminarla al escuchar el evento ```deleteRow``` podemos realizar eso que queramos.  
+  **Eliminar fila**  
+    Cuando eliminamos una fila, ésta se elimina sola. Pero si se quiere hacer algo extra solo se tiene que escuchar el evento ```deleteRow```  
+
+  **Obtener la opción seleccionada**  
+  Para obtener el valor de la opción que se seleccionó hay que escuchar el evento ```selectedOption```.  
   ``` javascript
-  deleteRow (rowIndex) {
-    // hacemos lo que queremos. El $event que emite la tabla es el el index de la fila.
+  setSelectedOption (option) {
+      this.objectDataTableOne[option.column] = option.value
   }
   ```  
-Para guardar el valor de la opción que se seleccionó escuchamos el evento ```selectedOption```.  
-``` javascript
-setSelectedOption (option) {
-    this.objectDataTableOne[option.column] = option.value
-}
-```  
-* #### Tabla con tres columnas de tipo TextInput
+* #### Tabla de tres columnas de tipo TextInput
 ![tabla con tres columnas de tipo TextInput](./images/input_table_example.gif)
 ``` html
 <DynamicTable
@@ -234,4 +234,45 @@ data () {
   }
 }
 ```
-**Una Columna de tipo TextInput se declara como un Objecto con las siguientes propiedades:**
+**¿Cómo declarar una columna de tipo TextInput?**  
+  * **name**: Nombre de la columna separando las plabras con guiones bajos.
+  * **type**: Tipo de la columna.
+  * **placeholder**: Placeholder del campo.
+  * **disabled**: Deshabilitar el campo.
+  * **inputType**: Tipo del text input.
+  ```javascript
+  columnsForTableTwo () {
+      return [
+        {
+          name: 'textInput_column',
+          type: 'textInput',
+          placeholder: 'Write here',
+          inputType: 'text'
+        },
+        {
+          name: 'textInput_number_column',
+          type: 'textInput',
+          placeholder: 'Enter only numbers',
+          inputType: 'number'
+        },
+        {
+          name: 'textInput_disabled_column',
+          type: 'textInput',
+          placeholder: 'I am a disabled input',
+          disabled: true,
+          inputType: 'text'
+        }
+      ]
+  }
+  ```
+  **Agregar fila**
+  Para agregar una fila tenemos que agregar un elemento de fila al Array de filas.
+  ```javascript
+  this.rowsForTableTwo.push({
+      textInput_column: null,
+      textInput_number_column: null,
+      textInput_disable_column: null
+  })
+  ```
+  **Eliminar fila**  
+    Cuando eliminamos una fila, ésta se elimina sola. Pero si se quiere hacer algo extra solo se tiene que escuchar el evento ```deleteRow```  
