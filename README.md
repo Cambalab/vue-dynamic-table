@@ -267,6 +267,7 @@ data () {
   ```
   **Agregar fila**
   Para agregar una fila tenemos que agregar un elemento de fila al Array de filas.
+
   ```javascript
   this.rowsForTableTwo.push({
       textInput_column: null,
@@ -274,42 +275,50 @@ data () {
       textInput_disable_column: null
   })
   ```
+
   **Eliminar fila**
-  Cuando eliminamos una fila, ésta se elimina sola. Pero si se quiere hacer algo extra solo se tiene que escuchar el evento ```deleteRow```
+
+  Cuando eliminamos una fila, ésta se elimina sola. Pero si se quiere hacer algo extra solo se tiene que escuchar el evento `deleteRow`
 ---
 ## Renderizar data proveniente de la Base de Datos  
 Para renderizar la data que viene de la Base de Datos, hay que pasarle a la *vue-dynamic-table* un Array de las filas con el nombre de la columna y el valor en la **prop data**.
 ### Ejemplos  
 * #### Selector
 En la tabla con la columna de tipo Selector la data que espera sería asi:
+
 ``` javascript
-export const DATA_FOR_TABLE_FOUR = [
-    { select_column: 1 },
-    { select_column: 2 },
-    { select_column: 3 }
-]```
+  export const DATA_FOR_TABLE_FOUR = [
+      { select_column: 1 },
+      { select_column: 2 },
+      { select_column: 3 }
+  ]
+```
+
 Cuando se cargue, la tabla va a tener 3 filas con el valor de cada objecto fila.
 ![example of table with TextInput columns](./images/select_table_database_example.png)
 
 * #### TextInput
 En la tabla con la columna de tipo TextInput la data que se espera sería asi:
+
 ``` javascript
-export const DATA_FOR_TABLE_FIVE = [
-    {
-      textInput_column: 'text 1',
-      textInput_number_column: '1',
-      textInput_disabled_column: 'show text 1'
-    },
-    {
-      textInput_column: 'text 2',
-      textInput_number_column: '2',
-      textInput_disabled_column: 'show text 2'
-    },
-    {
-      textInput_column: 'text 3',
-      textInput_number_column: '3',
-      textInput_disabled_column: 'show text 3'
-    }
-]```
+  export const DATA_FOR_TABLE_FIVE = [
+      {
+        textInput_column: 'text 1',
+        textInput_number_column: '1',
+        textInput_disabled_column: 'show text 1'
+      },
+      {
+        textInput_column: 'text 2',
+        textInput_number_column: '2',
+        textInput_disabled_column: 'show text 2'
+      },
+      {
+        textInput_column: 'text 3',
+        textInput_number_column: '3',
+        textInput_disabled_column: 'show text 3'
+      }
+  ]
+```
+
 Cuando se cargue, la tabla va a tener 3 filas con el valor que tiene cada objeto fila.
 ![example of table with TextInput columns](./images/input_table_database_example.png)
