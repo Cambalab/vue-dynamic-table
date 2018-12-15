@@ -15,7 +15,7 @@
 
 ``` bash
 # clonar el repositorio
-git clone https://github.com/LeonardoVaquel/vue-dynamic-table
+git clone https://github.com/Cambalab/vue-dynamic-table
 
 # ir al directorio
 cd vue-dynamic-table
