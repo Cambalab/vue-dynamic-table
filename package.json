@@ -5,6 +5,13 @@
   "author": "Camba <info@camba.coop>",
   "private": true,
   "license": "GPL-3.0",
+  "keywords": [
+    "javascript",
+    "javascript-plugin",
+    "vuejs",
+    "vue-components",
+    "open-source"
+  ],
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
