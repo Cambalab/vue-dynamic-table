@@ -322,4 +322,9 @@ En la tabla con la columna de tipo TextInput la data que se espera sería asi:
 ```
 
 Cuando se cargue, la tabla va a tener 3 filas con el valor que tiene cada objeto fila.
-![example of table with TextInput columns](./images/input_table_database_example.png)
+![example of table with TextInput columns](./images/input_table_database_example.png)  
+
+## License
+
+
+This software is licensed under the [GNU GPLv3 License](LICENSE), and sponsored by [Cambá](https://www.camba.coop).
