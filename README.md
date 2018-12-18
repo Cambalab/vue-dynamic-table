@@ -1,5 +1,7 @@
 # Vue Dynamic Table
 
+<img style="margin-left: 200px" src="./images/vue-table-logo.png" width="400">
+
 **Vue Dynamic Table** es un plugin para **Vue.js** con el que vas a poder crear tablas customizables y dinámicas para formularios.  
 
 ***Se está trabajando en el tipo de columna Checkbox***
@@ -278,7 +280,7 @@ data () {
 
   **Eliminar fila**  
   Cuando eliminamos una fila, ésta se elimina sola. Pero si se quiere hacer algo extra solo se tiene que escuchar el evento `deleteRow`
-  
+
 ---
 
 ## Renderizar data proveniente de la Base de Datos  
