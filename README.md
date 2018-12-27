@@ -1,6 +1,7 @@
 # Vue Dynamic Table
-
-<img style="margin-left: 200px" src="./images/vue-table-logo.png" width="400">
+<p align="center">
+<img src="./images/vue-table-logo.png" width="400">
+</p>
 
 **Vue Dynamic Table** es un plugin para **Vue.js** con el que vas a poder crear tablas customizables y dinámicas para formularios.  
 
