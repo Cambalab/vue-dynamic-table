@@ -1,4 +1,5 @@
-# Vue Dynamic Table
+<h1 align="center">Vue Dynamic Table</h1>
+
 <p align="center">
 <img src="./images/vue-table-logo.png" width="400">
 </p>
